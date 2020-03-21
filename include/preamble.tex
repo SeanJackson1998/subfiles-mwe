@@ -1,0 +1,140 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Miscellaneous Packages
+
+\usepackage{graphicx}   % Permits import of various graphics formats
+\usepackage{graphbox}   % Placement of graphics
+\usepackage[hidelinks]{hyperref} % Section hyperlinks
+\usepackage{pdflscape}  % Provides landscape mode for end code listings
+\usepackage{multicol}   % Provides ability to split output into columns
+\usepackage{enumitem}   % Numbered list settings
+\usepackage{csquotes}   % Auto open/close quotes
+\usepackage{pdfpages}   % Include PDFs
+\usepackage{pgfgantt}   % Gantt chart
+\usepackage{lscape}     % Landscape individual pages
+\usepackage{amsmath}    % Maths
+\usepackage{amssymb}    % Maths
+\usepackage{xcolor}     % Predefined colours
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Referencing
+
+% Harvard Bath
+\usepackage{natbib}
+\bibliographystyle{include/bathx}
+\newcommand*{\urlprefix}{Available from: }
+\newcommand*{\urldateprefix}{Accessed }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Custom Styles
+
+% List names
+\renewcommand{\bibname}{References}  % Title: 'Bibliography' --> 'References'
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Page Formatting
+
+% Page dimensions
+\usepackage[inner=4cm,outer=4cm]{geometry}
+
+% Headers and footers
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{13.6pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE,LO]{\rightmark}
+
+% Don't indent paragraphs, and have some space between them
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+% Don't align bottom of opposite pages with weird spacing
+\raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Figure numbering system
+
+\usepackage{chngcntr}
+\counterwithin{figure}{chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dissertation title pages
+
+\newcommand{\signature}{
+  \includegraphics[align=c,height=4em]{images/signature.pdf}
+}
+
+\newenvironment{spaced}[1]
+  {\begin{minipage}[c]{\textwidth}\vspace{#1}}
+  {\end{minipage}}
+
+\newenvironment{centrespaced}[2]
+  {\begin{center}\begin{minipage}[c]{#1}\vspace{#2}}
+  {\end{minipage}\end{center}}
+
+\newcommand{\declaration}[2]{
+  \thispagestyle{empty}
+  \begin{spaced}{4em}
+    \begin{center}
+      \LARGE\textbf{#1}
+    \end{center}
+  \end{spaced}
+  \begin{spaced}{3em}
+    \begin{center}
+      Submitted by: #2
+    \end{center}
+  \end{spaced}
+  \begin{spaced}{5em}
+    \section*{Copyright}
+
+    Attention is drawn to the fact that copyright of this dissertation rests
+    with its author. The Intellectual Property Rights of the products
+    produced as part of the project belong to the author unless otherwise specified
+    below, in accordance with the University of Bath's policy on intellectual property 
+   (see http://www.bath.ac.uk/ordinances/22.pdf).
+
+    This copy of the dissertation has been supplied on condition that anyone
+    who consults it is understood to recognise that its copyright rests with its
+    author and that no quotation from the dissertation and no information
+    derived from it may be published without the prior written consent of
+    the author.
+
+    \section*{Declaration}
+    This dissertation is submitted to the University of Bath in accordance
+    with the requirements of the degree of Bachelor of Science in the
+    Department of Computer Science. No portion of the work in this dissertation
+    has been submitted in support of an application for any other degree
+    or qualification of this or any other university or institution of learning.
+    Except where specifically acknowledged, it is the work of the author.
+  \end{spaced}
+
+  \begin{spaced}{5em}
+    Signed: \signature
+  \end{spaced}
+  }
+
+
+\newcommand{\consultation}[1]{%
+\thispagestyle{empty}
+\begin{centrespaced}{0.8\textwidth}{0.4\textheight}
+\ifnum #1 = 0
+This dissertation may be made available for consultation within the
+University Library and may be photocopied or lent to other libraries
+for the purposes of consultation.
+\else
+This dissertation may not be consulted, photocopied or lent to other
+libraries without the permission of the author for #1 
+\ifnum #1 = 1
+year
+\else
+years
+\fi
+from the date of submission of the dissertation.
+\fi
+\vspace{4em}
+
+Signed: \signature
+\end{centrespaced}
+}

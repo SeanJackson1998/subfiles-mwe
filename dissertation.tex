@@ -1,0 +1,39 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preamble
+
+\documentclass[11pt,twoside,a4paper]{report}
+\input{include/preamble}
+\usepackage{subfiles}
+\def\biblio{\bibliography{include/fyp.bib}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title
+
+\title{
+  \LaTeX~Subfiles Minimum Working Example
+}
+\author{Joe Davison}
+\date{March 2020}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dissertation
+
+\begin{document}
+\def\biblio{}
+  
+% Title Page
+\pagenumbering{gobble}
+\maketitle
+\newpage
+
+% Chapters
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\chapter{Introduction} \label{chap:intro}
+\subfile{chapters/introduction}
+
+% References
+\bibliography{include/fyp.bib} \label{sec:references}
+
+\end{document}
